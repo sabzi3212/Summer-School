@@ -1,0 +1,10 @@
+.curved-top::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background-color: rgb(234 88 12); /* Change this to the desired background color */
+  border-radius: 50% / 100px 100px 0 0;
+}
