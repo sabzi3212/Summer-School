@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import backgroundImage from '../../../assets/images/anna-samoylova-bTp32-t6K7c-unsplash.jpg'
+import backgroundImage from '../../../assets/images/artem-kniaz-DqgMHzeio7g-unsplash.jpg'
 
 
 const Banner = () => {
