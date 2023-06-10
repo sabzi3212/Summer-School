@@ -2,7 +2,7 @@ import './Footer.css';
 
 const Footer = () => {
     return (
-        <footer className="footer p-10 bg-orange-300	 text-base-content relative mt-44">
+        <footer className="footer p-10 bg-orange-300	 text-base-content relative">
       <div className="curved-top">
         <svg
           width="50"
