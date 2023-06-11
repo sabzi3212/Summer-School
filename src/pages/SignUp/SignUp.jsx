@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const {createUser} = useContext(AuthContext);
 
     const onSubmit = data => {
         console.log(data);
+        createUser(data.email, data.password)
+        .then(result =>{
+          const loggedUser = result.user;
+          console.log(loggedUser);
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'SignUp Successfull',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        })
+
     }
     return (
         <>

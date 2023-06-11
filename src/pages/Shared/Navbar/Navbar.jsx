@@ -1,17 +1,43 @@
-import React from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo/logo2.png'
+import { AuthContext } from '../../../providers/AuthProvider';
 
 const Navbar = () => {
-    const navItems = 
-    <>
-    <li><Link to='/'>Home</Link></li>
-    <li><Link to='/instructors'>Instructors</Link></li>
-    <li><Link to='/classes'>Classes</Link></li>
-    <li><Link to='/'>Dashboard</Link></li>
 
-    
-    </>
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () =>{
+        logOut()
+        .then(()=>{
+
+        })
+        .catch(error => console.log(error));
+    }
+    const navItems =
+        <>
+            <li><Link to='/'>Home</Link></li>
+            <li><Link to='/instructors'>Instructors</Link></li>
+            <li><Link to='/classes'>Classes</Link></li>
+
+
+            {
+                user ?
+                    <>
+                        <li><Link to='/'>Dashboard</Link></li>
+                        <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button>
+
+                    </>
+                    :
+                    <>
+                        <li><Link to='/login'><button className="btn btn-ghost">Login</button></Link></li>
+
+                    </>
+            }
+
+
+
+        </>
     return (
         <div className="navbar bg-orange-300 h-28">
             <div className="navbar-start">
@@ -26,16 +52,13 @@ const Navbar = () => {
                 </div>
 
                 <Link to='/' className="btn btn-ghost normal-case text-xl">
-                    <img  src={logo} alt="" />
+                    <img src={logo} alt="" />
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     {navItems}
                 </ul>
-            </div>
-            <div className="navbar-end">
-            <button className="btn btn-ghost">LogOut</button>
             </div>
         </div>
     );
