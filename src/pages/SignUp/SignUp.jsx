@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2';
 
 const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const {createUser} = useContext(AuthContext);
+    const {createUser, updateUserProfile} = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const onSubmit = data => {
         console.log(data);
@@ -15,13 +16,21 @@ const SignUp = () => {
         .then(result =>{
           const loggedUser = result.user;
           console.log(loggedUser);
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'SignUp Successfull',
-            showConfirmButton: false,
-            timer: 1500
+          updateUserProfile(data.name, data.photoURL)
+          .then(()=>{
+            console.log('user Profile updated');
+            reset();
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'SignUp Successfull',
+              showConfirmButton: false,
+              timer: 1500
+            });
+            navigate('/');
           })
+          .catch(error => console.log(error))
+          
         })
 
     }
