@@ -1,6 +1,9 @@
 import { Link, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
+
+    const isAdmin = true;
+    const isInstructor = false;
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -13,11 +16,36 @@ const Dashboard = () => {
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80 h-full bg-orange-200 text-base-content">
-                    {/* Sidebar content here */}
+
+                   {
+                    isAdmin ? 
+                    <>
+                    <li><Link>Manage Classes</Link></li>
+                    <li><Link to='/dashboard/allusers'>Manage Users</Link></li>
+                    
+                    
+                    </> 
+                    :
+
+                    isInstructor ? 
+                    <>
+                    <li><Link>Add a class</Link></li>
+                    <li><Link>My classes</Link></li>
+                    
+                    </>
+                    :
+                    <>
                     <li><Link to='/dashboard/mybookings'>My Selected Class</Link></li>
                     <li><Link>My Enrolled Class</Link></li>
                     <li><Link>Payment History</Link></li>
-                    <li><Link to='/'>Home</Link></li>
+                    
+                    
+                    
+                    </>
+
+                   }
+                   <li><Link to='/'>Home</Link></li>
+                    
                 </ul>
 
             </div>

@@ -9,6 +9,7 @@ import SignUp from "../pages/SignUp/SignUp";
 import Login from "../pages/Login/Login";
 import Dashboard from "../Layout/Dashboard";
 import MyBookings from "../pages/Dashboard/MyBookings";
+import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 
 
 
@@ -47,6 +48,10 @@ export const router = createBrowserRouter([
             {
                 path:'mybookings',
                 element: <MyBookings></MyBookings>
+            },
+            {
+                path:'allusers',
+                element: <AllUsers></AllUsers>
             }
         ]
     }
