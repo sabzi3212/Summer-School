@@ -56,7 +56,7 @@ const Login = () => {
                 <input type="password" name='password' {...register("password")} placeholder="password" className="input input-bordered" />
               </div>
               <div className="form-control mt-6">
-                <input className="btn btn-primary" type="submit" value="Sign Up" />
+                <input className="btn btn-primary" type="submit" value="Login" />
               </div>
             </form>
             <p><small>New to Summer School? <Link to='/signUp'>Register Now</Link></small></p>
