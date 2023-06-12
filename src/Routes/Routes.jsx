@@ -10,6 +10,7 @@ import Login from "../pages/Login/Login";
 import Dashboard from "../Layout/Dashboard";
 import MyBookings from "../pages/Dashboard/MyBookings";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
+import AddClass from "../pages/Dashboard/AddClass/AddClass";
 
 
 
@@ -52,6 +53,11 @@ export const router = createBrowserRouter([
             {
                 path:'allusers',
                 element: <AllUsers></AllUsers>
+            },
+            {
+                path: 'addclass',
+                element: <AddClass></AddClass>
+
             }
         ]
     }
