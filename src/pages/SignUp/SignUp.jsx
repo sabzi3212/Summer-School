@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -30,6 +31,7 @@ const SignUp = () => {
             .then(res => res.json())
             .then(data =>{
               if(data.insertedId){
+                reset();
                 Swal.fire({
                   position: 'center',
                   icon: 'success',
@@ -99,6 +101,7 @@ const SignUp = () => {
               </div>
             </form>
             <p><small>Already have an account? <Link to='/login'>Login Now</Link></small></p>
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>
