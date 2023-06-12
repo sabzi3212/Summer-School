@@ -24,7 +24,7 @@ const Navbar = () => {
             {
                 user ?
                     <>
-                        <li><Link to='/'>Dashboard</Link></li>
+                        <li><Link to='/dashboard/mybookings'>Dashboard</Link></li>
                         <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button>
 
                     </>

@@ -7,6 +7,8 @@ import Instructors from "../pages/Instructors/Instructors";
 import AllClasses from "../pages/AllClasses/AllClasses";
 import SignUp from "../pages/SignUp/SignUp";
 import Login from "../pages/Login/Login";
+import Dashboard from "../Layout/Dashboard";
+import MyBookings from "../pages/Dashboard/MyBookings";
 
 
 
@@ -38,4 +40,14 @@ export const router = createBrowserRouter([
             },
         ]
     },
+    {
+        path: '/dashboard',
+        element:<Dashboard></Dashboard>,
+        children: [
+            {
+                path:'mybookings',
+                element: <MyBookings></MyBookings>
+            }
+        ]
+    }
 ]);

@@ -3,10 +3,12 @@ import { AuthContext } from '../../providers/AuthProvider';
 import { data } from 'autoprefixer';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
+import useBookings from '../../hooks/useBookings';
 
 const AllClassesCard = ({item}) => {
     const {_id,name, course, courseImg, price, availableSeats} = item;
     const {user} = useContext(AuthContext);
+    const [, refetch] = useBookings();
     const navigate = useNavigate();
     const location = useLocation();
     const handleBookNow = item =>{
@@ -23,6 +25,7 @@ const AllClassesCard = ({item}) => {
             .then(res => res.json())
             .then(data =>{
                 if(data.insertedId){
+                    refetch();
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
