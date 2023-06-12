@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
@@ -19,15 +19,30 @@ const SignUp = () => {
           updateUserProfile(data.name, data.photoURL)
           .then(()=>{
             console.log('user Profile updated');
+            const saveUser = {name: data.name, email: data.email};
+            fetch('http://localhost:5000/users', {
+              method: 'POST',
+              headers:{
+                'content-type':'application/json'
+              },
+              body: JSON.stringify(saveUser)
+            })
+            .then(res => res.json())
+            .then(data =>{
+              if(data.insertedId){
+                Swal.fire({
+                  position: 'center',
+                  icon: 'success',
+                  title: 'SignUp Successfull',
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+                navigate('/');
+
+              }
+            })
             reset();
-            Swal.fire({
-              position: 'center',
-              icon: 'success',
-              title: 'SignUp Successfull',
-              showConfirmButton: false,
-              timer: 1500
-            });
-            navigate('/');
+            
           })
           .catch(error => console.log(error))
           
