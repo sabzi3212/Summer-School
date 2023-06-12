@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Login = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -59,6 +60,7 @@ const Login = () => {
               </div>
             </form>
             <p><small>New to Summer School? <Link to='/signUp'>Register Now</Link></small></p>
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>
