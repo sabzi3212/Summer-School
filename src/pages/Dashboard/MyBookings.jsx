@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useBookings from '../../hooks/useBookings';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
+import { Link, useNavigate } from 'react-router-dom';
 
 const MyBookings = () => {
     const [bookings, refetch] = useBookings();
+    // const [selectedPrice, setSelectedPrice] = useState(null);
+    const navigate = useNavigate();
+
+    const handlePayment = item =>{
+        navigate('/dashboard/payment', {state:{item:item}})
+    }
+
     const handleDelete = item => {
         Swal.fire({
             title: 'Are you sure?',
@@ -17,7 +25,7 @@ const MyBookings = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/bookings/${item._id}`, {
+                fetch(`https://summer-school-server-five.vercel.app/bookings/${item._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -85,7 +93,8 @@ const MyBookings = () => {
                                     <button onClick={() => handleDelete(item)} className="btn btn-ghost btn-xs">Delete</button>
                                 </td>
                                 <td>
-                                    <button className="btn btn-ghost btn-xs">Pay</button>
+                                    
+                                        <button onClick={()=>handlePayment(item)} className="btn btn-ghost btn-xs">Pay</button>
                                 </td>
                             </tr>)
                         }

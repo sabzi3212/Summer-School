@@ -5,7 +5,10 @@ import useInstructors from '../../../hooks/UseInstructors';
 const PopularInstructors = () => {
 
     const [classes] = useInstructors();
-    const popular = classes.filter(item => item.category === 'popular')
+    // const popular = classes.filter(item => item.category === 'popular')
+    const sortedByAvailableSeats = classes.sort((a, b) => b.availableSeats - a.availableSeats);
+const popular = sortedByAvailableSeats.slice(0, 6);
+console.log(popular);
 
     // const [popularInstructors, setPopularInstructors] = useState([]);
 
@@ -21,7 +24,7 @@ const PopularInstructors = () => {
     return (
         <div>
              <h1 className="text-3xl text-center text-orange-300 mb-8 mt-8">Populer Instructors</h1>
-            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-5'>
+            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-2'>
             {
                 popular.map(item => <PopularCard key={item._id} item={item}></PopularCard>)
             }

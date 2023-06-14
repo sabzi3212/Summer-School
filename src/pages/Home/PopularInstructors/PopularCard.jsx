@@ -1,7 +1,8 @@
 import React from 'react';
 
 const PopularCard = ({item}) => {
-    const {name, email, image, class_name} = item;
+    const {name, email, image, class_name
+    } = item;
     return (
         <div className="card w-96 glass">
             <figure><img className='h-[300px] w-[400px]' src={image} alt="car!" /></figure>

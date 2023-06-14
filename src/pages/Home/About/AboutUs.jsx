@@ -2,7 +2,7 @@ import img from '../../../assets/images/katherine-hanlon-xaG8oaZD7ss-unsplash.jp
 
 const AboutUs = () => {
     return (
-        <div className="hero-content flex-col lg:flex-row w-full ">
+        <div className="hero-content flex-col lg:flex-row w-full mb-5">
             <img src={img} className="max-w-sm rounded-lg shadow-2xl w-1/2" />
             <div className='w-1/2 ml-10'>
             

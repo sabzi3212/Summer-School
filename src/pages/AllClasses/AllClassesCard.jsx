@@ -15,7 +15,7 @@ const AllClassesCard = ({item}) => {
         console.log('item clicked', item);
         if(user){
             const bookedItem = {classId: _id, name, course, courseImg, price, email: user?.email}
-            fetch('http://localhost:5000/bookings', {
+            fetch('https://summer-school-server-five.vercel.app/bookings', {
                 method: 'POST',
                 headers:{
                     'content-type' : 'application/json'

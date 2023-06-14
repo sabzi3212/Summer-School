@@ -22,7 +22,7 @@ const Banner = () => {
     const seconds = Math.floor((timeUntilCamp % (1000 * 60)) / 1000);
 
     return (
-        <div className="h-[400px] mb-6" style={{ backgroundImage: `url(${backgroundImage})` }}>
+        <div className="h-[400px] mb-6 mt-6" style={{ backgroundImage: `url(${backgroundImage})` }}>
             <div className="timer flex flex-col justify-center items-center py-20">
                 <h3 className='font-bold text-3xl text-orange-400'>Summer Camp Starts In</h3>
                 <h1>{days}d {hours}h {minutes}m {seconds}s</h1>

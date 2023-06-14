@@ -24,7 +24,7 @@ const Dashboard = () => {
                    {
                     isAdmin ? 
                     <>
-                    <li><Link>Manage Classes</Link></li>
+                    <li><Link to='/dashboard/manageclasses'>Manage Classes</Link></li>
                     <li><Link to='/dashboard/allusers'>Manage Users</Link></li>
                     
                     
@@ -34,14 +34,14 @@ const Dashboard = () => {
                     isInstructor ? 
                     <>
                     <li><Link to='/dashboard/addclass'>Add a class</Link></li>
-                    <li><Link>My classes</Link></li>
+                    <li><Link to='/dashboard/myclasses'>My classes</Link></li>
                     
                     </>
                     :
                     <>
                     <li><Link to='/dashboard/mybookings'>My Selected Class</Link></li>
-                    <li><Link>My Enrolled Class</Link></li>
-                    <li><Link>Payment History</Link></li>
+                    <li><Link to='/dashboard/enrolledclasses'>My Enrolled Class</Link></li>
+                    <li><Link to='/dashboard/paymenthistory'>Payment History</Link></li>
                     
                     
                     
